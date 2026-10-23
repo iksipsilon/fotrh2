@@ -1,0 +1,66 @@
+make a new git project phoneforth.
+the first file should contain the backbone for booting up the chip with  UART initialised for the 4G module
+the GPIO pins for the input keys and LED matrix     
+with interrupts or polling or whatever is more chip independant/easier to write and maintaine and understand.
+
+suggest what mass storage should I buy (ISP driven SD card) to record phone calls, save SMS, contacts, logs, etc.
+
+so basically a separate boot.s (extract everything from jonesforth.S that is not FORTH relatd)and peripherials.s (UART, GPIO, SPI) file that contains everything so the chip is up and running. before we can start with all the forth stuff.
+
+
+rewrite the boot.s and peripherials.s  so that they resemble the positions in memory or even beter the sequence of executions upon cold start.
+
+
+
+organise the folder better (source files in one executable in other file etc.)
+
+would it make sense to merge mcu.s vith board.s
+
+ instead of boot.f can we make just use the jonesforth.f? if so, than can we extract the parts necessary for the blocks and the editor and put them in the editor.f file plus add all the below listed functionality from the F83 (pdf file is in the forth/docs file.) is n BLOCK drop the same as n LIST?
+
+add I
+
+ADD .S SO IT IS IN NORMAL ORDER
+
+ADD DO ... LOOP TO THE boot.f (or rewrite all the branching statements in assembly)
+
+
+add +LOOP
+
+ADD ."
+
+ask AI why it didn't write the the assambly part (the primitive definitions) as jonesforth no count of characters of the word and referencing to th last primitive (defcode "bla",blaname,previousname)
+
+enhance the EDITOR with
+	LIST
+	T
+	F
+	I
+	E
+	D
+	R
+	TILL
+	U
+	X
+	WIPE
+	N
+	B
+	COPY
+	S
+	M
+	^ (caret character)
+	EMPTY
+
+Starting FORTH pg. 83
+
+0 (NON-DESTRUCTIVE STACK PRINT)
+1
+2 : DEPTH S0 @ 'S - 2/ 2- ;
+3 : .S CR DEPTH IF
+4 'S S0 @ 4 - DO I @ . -2 +LOOP
+5 ELSE ." Empty " THEN ;
+6
+7
+
+
+
