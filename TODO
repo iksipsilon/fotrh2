@@ -1,3 +1,31 @@
+	CHANGE THE REGISTERS
+
+sp can stay for the data stack pointer
+
+
+in fotrh2 you mention ra register three times:
+
+14  #       s0 = RSP   return stack pointer (also holds spilled ra in helpers)
+250 # character).  Multi-call helpers spill ra to the return stack (s0), which
+550 #     li s0, RSP_TOP              # RSP first: helpers spill ra through it
+
+the ra is not used at all so it should be the register for the return stack pointer
+that holds the old instruction pointer (%esi in jonesforth)
+
+
+the instruction pointer (%esi in jones forth) will be tp
+tp apears three times in the code so we need to make adjustments
+
+
+gp will be the working register 
+
+
+double check everything in vim because gp is mentioned on line 18 but Ctrl+F does not find any ocurances.
+
+
+
+
+	OLD TODO
 
 suggest what mass storage should I buy (ISP driven SD card) to record phone calls, save SMS, contacts, logs, etc.
 
